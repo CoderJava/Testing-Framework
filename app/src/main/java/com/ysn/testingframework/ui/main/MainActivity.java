@@ -80,15 +80,15 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     }
 
     private void doDivide(String inputNumberA, String inputNumberB) {
-        // TODO: 10/29/17 do something in here
+        mainPresenter.onDivideNumber(inputNumberA, inputNumberB);
     }
 
     private void doMultiplication(String inputNumberA, String inputNumberB) {
-        // TODO: 10/29/17 do something in here
+        mainPresenter.onMultiplication(inputNumberA, inputNumberB);
     }
 
     private void doMinusNumber(String inputNumberA, String inputNumberB) {
-        // TODO: 10/29/17 do something in here
+        mainPresenter.onMinusNumber(inputNumberA, inputNumberB);
     }
 
     private void doPlusNumber(String inputNumberA, String inputNumberB) {
@@ -105,14 +105,52 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
         mainPresenter.onDetachMvp();
     }
 
+    private void updateResultNumber(int resultNumber) {
+        textViewResultMainActivity.setText(String.format("Result: %s", resultNumber));
+    }
+
+    private void showSnackbarFailed(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
+                .show();
+    }
+
     @Override
     public void plusNumber(int resultPlus) {
-        textViewResultMainActivity.setText(String.format("Result: %s", resultPlus));
+        updateResultNumber(resultPlus);
     }
 
     @Override
     public void plusNumberFailed(String message) {
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
-                .show();
+        showSnackbarFailed(message);
+    }
+
+    @Override
+    public void minusNumber(int resultMinus) {
+        updateResultNumber(resultMinus);
+    }
+
+    @Override
+    public void minusNumberFailed(String message) {
+        showSnackbarFailed(message);
+    }
+
+    @Override
+    public void multiplicationFailed(String message) {
+        showSnackbarFailed(message);
+    }
+
+    @Override
+    public void multiplicationNumber(int resultMultiplication) {
+        updateResultNumber(resultMultiplication);
+    }
+
+    @Override
+    public void divideNumberFailed(String message) {
+        showSnackbarFailed(message);
+    }
+
+    @Override
+    public void divideNumber(int resultDivide) {
+        updateResultNumber(resultDivide);
     }
 }
