@@ -21,12 +21,13 @@ install:
   - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
 
 script:
+  - ./gradlew build jacocoTestReport test
   - ./gradlew test
 
 before_install:
   - pip install --user codecov
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
 
 
