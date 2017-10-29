@@ -17,6 +17,9 @@ android:
   licenses:
     - android-sdk-license-.+
 
+install:
+  - echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+
 script:
   - ./gradlew test
 
