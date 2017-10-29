@@ -1,0 +1,26 @@
+language: android
+jdk: oraclejdk8
+sudo: false
+
+android:
+  components:
+    - platform-tools
+    - tools
+    - extra-android-m2-repository
+
+    # The BuildTools version
+    - build-tools-26.0.2
+
+    # The SDK version
+    - android-21
+
+script: 
+  - ./gradlew test
+
+before_install:
+  - pip install --user codecov
+
+after_success:
+  - codecov
+
+

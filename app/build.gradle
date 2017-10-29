@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.all {
+            jvmArgs '-XX:MaxPermSize=256m'
+        }
+    }
 }
 
 dependencies {
