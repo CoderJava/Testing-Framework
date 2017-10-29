@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Testing Framework</string>
+    <string name="input_number_a">Input Number A</string>
+    <string name="input_number_b">Input Number B</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiplication">x</string>
+    <string name="divide">/</string>
+</resources>
