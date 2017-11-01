@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  * Created by yudisetiawan on 10/29/17.
  */
 @RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21, manifest = "/Users/yudisetiawan/AndroidStudioProjects/TestingFramework/app/src/main/AndroidManifest.xml")
+@Config(constants = BuildConfig.class, sdk = 21)
 public class MainActivityTest {
 
     private MainActivity mainActivity;
