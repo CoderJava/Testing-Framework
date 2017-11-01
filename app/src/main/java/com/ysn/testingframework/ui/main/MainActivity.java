@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     private Button buttonMinusMainActivity;
     private Button buttonMultiplicationMainActivity;
     private Button buttonDivideMainActivity;
-    private TextView textViewResultMainActivity;
+    public TextView textViewResultMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,5 +152,18 @@ public class MainActivity extends AppCompatActivity implements MainView, View.On
     @Override
     public void divideNumber(int resultDivide) {
         updateResultNumber(resultDivide);
+    }
+
+    public void setPresenter(MainPresenter mainPresenter) {
+        this.mainPresenter = mainPresenter;
+    }
+
+    public void tesTypeInput(String input) {
+        textViewResultMainActivity.setText(input);
+    }
+
+    @Override
+    public void testing() {
+
     }
 }

@@ -25,13 +25,17 @@ public class MainPresenter implements MvpPresenter<MainView> {
         mainView = null;
     }
 
-    void onPlusNumber(String inputNumberA, String inputNumberB) {
+    public void testing() {
+        mainView.testing();
+    }
+
+    public void onPlusNumber(String inputNumberA, String inputNumberB) {
         boolean isValidInputNumber = isValidNumber(inputNumberA, inputNumberB);
         if (isValidInputNumber) {
-            mainView.plusNumberFailed(messageInvalidInputNumber);
-        } else {
             int resultPlus = plus(inputNumberA, inputNumberB);
             mainView.plusNumber(resultPlus);
+        } else {
+            mainView.plusNumberFailed(messageInvalidInputNumber);
         }
     }
 
@@ -52,10 +56,10 @@ public class MainPresenter implements MvpPresenter<MainView> {
     void onMinusNumber(String inputNumberA, String inputNumberB) {
         boolean isValidInputNumber = isValidNumber(inputNumberA, inputNumberB);
         if (isValidInputNumber) {
-            mainView.minusNumberFailed(messageInvalidInputNumber);
-        } else {
             int resultMinus = minus(inputNumberA, inputNumberB);
             mainView.minusNumber(resultMinus);
+        } else {
+            mainView.minusNumberFailed(messageInvalidInputNumber);
         }
     }
 
@@ -66,10 +70,10 @@ public class MainPresenter implements MvpPresenter<MainView> {
     void onMultiplication(String inputNumberA, String inputNumberB) {
         boolean isValidInputNumber = isValidNumber(inputNumberA, inputNumberB);
         if (isValidInputNumber) {
-            mainView.multiplicationFailed(messageInvalidInputNumber);
-        } else {
             int resultMultiplication = multiplication(inputNumberA, inputNumberB);
             mainView.multiplicationNumber(resultMultiplication);
+        } else {
+            mainView.multiplicationFailed(messageInvalidInputNumber);
         }
     }
 
@@ -80,10 +84,10 @@ public class MainPresenter implements MvpPresenter<MainView> {
     void onDivideNumber(String inputNumberA, String inputNumberB) {
         boolean isValidInputNumber = isValidNumber(inputNumberA, inputNumberB);
         if (isValidInputNumber) {
-            mainView.divideNumberFailed(messageInvalidInputNumber);
-        } else {
             int resultDivide = divide(inputNumberA, inputNumberB);
             mainView.divideNumber(resultDivide);
+        } else {
+            mainView.divideNumberFailed(messageInvalidInputNumber);
         }
     }
 
