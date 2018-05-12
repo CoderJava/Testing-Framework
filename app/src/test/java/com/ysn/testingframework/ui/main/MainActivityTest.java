@@ -3,6 +3,9 @@ package com.ysn.testingframework.ui.main;
 
 import com.ysn.testingframework.BuildConfig;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +36,39 @@ public class MainActivityTest {
         mainActivity = Mockito.mock(MainActivity.class);
         mainPresenter = new MainPresenter();
         mainPresenter.onAttachMvp(mainActivity);
+    }
+
+    @Test
+    public void testJsonObject() throws JSONException {
+        JSONObject jsonObjectData = new JSONObject();
+
+        JSONArray jsonArrayDataSiswa = new JSONArray();
+        JSONObject jsonObjectItemDataSiswa1 = new JSONObject();
+        jsonObjectItemDataSiswa1.put("nama", "yudi");
+        jsonArrayDataSiswa.put(jsonObjectItemDataSiswa1);
+
+        JSONObject jsonObjectItemDataSiswa2 = new JSONObject();
+        jsonObjectItemDataSiswa2.put("nama", "setiawan");
+        jsonArrayDataSiswa.put(jsonObjectItemDataSiswa2);
+
+        JSONObject jsonObjectItemDataSiswa3 = new JSONObject();
+        jsonObjectItemDataSiswa3.put("nama", "kolonel");
+        jsonArrayDataSiswa.put(jsonObjectItemDataSiswa3);
+
+        // Masukkan JSONArray ke JSONObject
+        jsonObjectData.put("data", jsonArrayDataSiswa);
+        String strJsonObjectData = jsonObjectData.toString();
+        System.out.println("strJsonObjectData: " + strJsonObjectData);
+
+        // Tambah data item lagi ke JSONArray
+        JSONObject jsonObjectItemDataSiswa4 = new JSONObject();
+        jsonObjectItemDataSiswa4.put("nama", "dian");
+        jsonArrayDataSiswa.put(jsonObjectItemDataSiswa4);
+
+        // Kenapa di variable JSONObject-nya juga bertambah???
+        // Kan yang saya tambahkan di JSONArray
+        String strJsonObjectData2 = jsonObjectData.toString();
+        System.out.println("strJsonObjectData2: " + strJsonObjectData2);
     }
 
     @Test
@@ -142,13 +178,6 @@ public class MainActivityTest {
     public void testDivideViewFailed() {
         mainPresenter.onDivideNumber("5i", "5");
         Mockito.verify(mainActivity).divideNumberFailed(messageInvalidInputNumber);
-    }
-
-    @Test
-    public void testOnPlusNumber() {
-        String inputNumberA = "5";
-        String inputNumberB = "15";
-        mainPresenter.onPlusNumber(inputNumberA, inputNumberB);
     }
 
 }
